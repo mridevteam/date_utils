@@ -43,6 +43,7 @@
     "chai": "^3.5.0",
     "chai-spies": "^0.6.0",
     "coveralls": "^2.11.12",
+    "istanbul": "^0.4.5",
     "jscs": "^2.11.0",
     "mocha": "^2.5.3",
     "mocha-lcov-reporter": "^1.2.0"
