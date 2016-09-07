@@ -1,0 +1,55 @@
+{
+  "name": "date_utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./index.js",
+  "scripts": {
+    "buildClient": "browserify index.js -t babelify --outfile ./dist/dateUtils.js -s __dateUtils",
+    "preversion": "npm run lint && npm run test && npm run buildClient",
+    "lint": "./node_modules/jscs/bin/jscs src -x",
+    "test": "./node_modules/mocha/bin/_mocha --full-trace --recursive ./src/test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mridevteam/date_utils.git"
+  },
+  "keywords": [
+    "date",
+    "utilities"
+  ],
+  "author": "MriDevTeam",
+  "contributors": [
+    {
+      "name": "Collin Estes",
+      "email": "collin.j.estes@gmail.com"
+    },
+    {
+      "name": "Mike Fielden",
+      "email": "fielden.mike@gmail.com"
+    },
+    {
+      "name": "Ryan Gill",
+      "email": "ryanjgill2@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mridevteam/date_utils/issues"
+  },
+  "devDependencies": {
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.0",
+    "chai": "^3.5.0",
+    "chai-spies": "^0.6.0",
+    "jscs": "^2.11.0",
+    "mocha": "^2.5.3"
+  },
+  "engines": {
+    "node": "6.5"
+  },
+  "homepage": "https://github.com/mridevteam/date_utils#readme",
+  "dependencies": {
+    "moment": "^2.14.1",
+    "validity_checks": "^1.0.0"
+  }
+}
