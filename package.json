@@ -7,7 +7,8 @@
     "buildClient": "browserify index.js -t babelify --outfile ./dist/dateUtils.js -s __dateUtils",
     "preversion": "npm run lint && npm run test && npm run buildClient",
     "lint": "./node_modules/jscs/bin/jscs src -x",
-    "test": "./node_modules/mocha/bin/_mocha --full-trace --recursive ./src/test"
+    "test": "istanbul cover ./node_modules/mocha/bin/_mocha ./src/test --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
+    "test_old": "./node_modules/mocha/bin/_mocha --full-trace --recursive ./src/test"
   },
   "repository": {
     "type": "git",
@@ -41,8 +42,10 @@
     "browserify": "^13.1.0",
     "chai": "^3.5.0",
     "chai-spies": "^0.6.0",
+    "coveralls": "^2.11.12",
     "jscs": "^2.11.0",
-    "mocha": "^2.5.3"
+    "mocha": "^2.5.3",
+    "mocha-lcov-reporter": "^1.2.0"
   },
   "engines": {
     "node": "6.5"
