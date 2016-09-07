@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/mridevteam/date_utils.svg?branch=master)](https://travis-ci.org/mridevteam/date_utils)
+
 # validity_checks
 Tests the input for correct and reasonable conditions, such as isObject, isFunction etc...
 
