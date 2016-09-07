@@ -7,8 +7,7 @@
     "buildClient": "browserify index.js -t babelify --outfile ./dist/dateUtils.js -s __dateUtils",
     "preversion": "npm run lint && npm run test && npm run buildClient",
     "lint": "./node_modules/jscs/bin/jscs src -x",
-    "test": "istanbul cover ./node_modules/mocha/bin/_mocha ./src/test --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
-    "test_old": "./node_modules/mocha/bin/_mocha --full-trace --recursive ./src/test"
+    "test": "istanbul cover ./node_modules/mocha/bin/_mocha ./src/test --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "repository": {
     "type": "git",
