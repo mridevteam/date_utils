@@ -3,3 +3,9 @@
 
 # date_utils
 Consists of date utility functions
+
+### Continuous Integration
+Currently using [travis-ci.org](https://travis-ci.org/mridevteam) for continuous integration.
+
+### Code Coverage
+Currently using [coveralls.io](https://coveralls.io/repos/github/mridevteam) to provide code coverage badge.
