@@ -10,5 +10,5 @@ module.exports = (mDate, duration, outputFormat = 'YYYY-MM-DD') => {
                 ? unitOfTime.toUpperCase()
                 : unitOfTime;
   
-  return mDate.add(_duration, unitOfTime).format(outputFormat);
+  return mDate.clone().add(_duration, unitOfTime).format(outputFormat);
 };
