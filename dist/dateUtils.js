@@ -1,19 +1,23 @@
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.__dateUtils = f()}})(function(){var define,module,exports;return (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
-const asMomentDate = require('./src/asMomentDate'),
-      outputMomentDateInFormat = require('./src/outputMomentDateInFormat'),
-      outputInFormat = mDate => format => outputMomentDateInFormat(mDate, format),
-      addDuration = require('./src/addDuration');
+var asMomentDate = require('./src/asMomentDate'),
+    outputMomentDateInFormat = require('./src/outputMomentDateInFormat'),
+    outputInFormat = function outputInFormat(mDate) {
+  return function (format) {
+    return outputMomentDateInFormat(mDate, format);
+  };
+},
+    _addDuration = require('./src/addDuration');
 
 module.exports = function dateUtilities(dateToParse) {
-  let mDate = asMomentDate(dateToParse);
+  var mDate = asMomentDate(dateToParse);
 
   if (!mDate.isValid()) {
-    throw new Error(`${ dateToParse } isnt a valid date`);
+    throw new Error(dateToParse + ' isnt a valid date');
   }
 
-  let output = outputInFormat(mDate);
+  var output = outputInFormat(mDate);
 
   return {
     dateProvided: dateToParse,
@@ -23,11 +27,14 @@ module.exports = function dateUtilities(dateToParse) {
     dateForDisplay: output('MM-DD-YYYY'),
     dateForDisplayFull: output('MMM DD, YYYY'),
     toDbFormat: new Date(mDate.year(), mDate.month(), mDate.date()),
-    addDuration: (duration = '0d', outputFormat = 'YYYY-MM-DD') => {
+    addDuration: function addDuration() {
+      var duration = arguments.length <= 0 || arguments[0] === undefined ? '0d' : arguments[0];
+      var outputFormat = arguments.length <= 1 || arguments[1] === undefined ? 'YYYY-MM-DD' : arguments[1];
+
       if (duration === '0d') {
-        console.log(`duration read as ${ duration }; probably didnt pass a duration`);
+        console.log('duration read as ' + duration + '; probably didnt pass a duration');
       }
-      return addDuration(mDate, duration, outputFormat);
+      return _addDuration(mDate, duration, outputFormat);
     }
   };
 };
@@ -4347,8 +4354,10 @@ module.exports = requiredParameter;
 },{}],11:[function(require,module,exports){
 'use strict';
 
-module.exports = (mDate, duration, outputFormat = 'YYYY-MM-DD') => {
-  let _duration = duration.slice(0, duration.length - 1),
+module.exports = function (mDate, duration) {
+  var outputFormat = arguments.length <= 2 || arguments[2] === undefined ? 'YYYY-MM-DD' : arguments[2];
+
+  var _duration = duration.slice(0, duration.length - 1),
       unitOfTime = duration.charAt(duration.length - 1);
 
   // transforming 'm' to 'M' because we mean months not minutes
@@ -4360,17 +4369,19 @@ module.exports = (mDate, duration, outputFormat = 'YYYY-MM-DD') => {
 },{}],12:[function(require,module,exports){
 'use strict';
 
-const moment = require('moment');
+var moment = require('moment');
 
-module.exports = dateToParse => {
+module.exports = function (dateToParse) {
   if (dateToParse instanceof moment) {
     return dateToParse;
   } else {
-    let dateObject = new Date(dateToParse);
+    var dateObject = new Date(dateToParse);
     if (isNaN(dateObject.valueOf())) {
       // Momentjs doesnt give the ability to invalidate its object
       // For now since all we need to ask isValid? just pass back false
-      return { isValid: () => false };
+      return { isValid: function isValid() {
+          return false;
+        } };
     }
 
     return moment.utc(dateObject);
@@ -4380,11 +4391,14 @@ module.exports = dateToParse => {
 },{"moment":2}],13:[function(require,module,exports){
 'use strict';
 
-const validityChecks = require('validity_checks'),
-      moment = require('moment'),
-      rp = validityChecks.requiredParameter;
+var validityChecks = require('validity_checks'),
+    moment = require('moment'),
+    rp = validityChecks.requiredParameter;
 
-module.exports = (mDtf = rp('dateToFormat(moment)'), desiredFormat = rp('desiredFormat')) => {
+module.exports = function () {
+  var mDtf = arguments.length <= 0 || arguments[0] === undefined ? rp('dateToFormat(moment)') : arguments[0];
+  var desiredFormat = arguments.length <= 1 || arguments[1] === undefined ? rp('desiredFormat') : arguments[1];
+
   if (!(mDtf instanceof moment)) {
     throw new Error('First param must be a momentized date object');
   }
