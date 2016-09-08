@@ -18,7 +18,7 @@ describe('outputMomentDateInFormatSpec', function () {
   
   describe('Error states', function () {
     it('should only accept moment object on first param', function() {
-      expect(function() { outputMomentDateInFormat('not-moment'); }).to.throw();
+      expect(function() { outputMomentDateInFormat('not-moment', 'nothing'); }).to.throw();
     });
     
     it('should error if not passed any params', function () {
