@@ -23,6 +23,7 @@ module.exports = function dateUtilities (dateToParse) {
     , standardDateFormat: output('YYYY-MM-DD HH:mm:ss')
     , dateForDisplay: output('MM-DD-YYYY')
     , dateForDisplayFull: output('MMM DD, YYYY')
+    , format: output
     , toDbFormat: new Date(mDate.year(), mDate.month(), mDate.date())
     , addDuration: (duration = '0d', outputFormat = 'YYYY-MM-DD') => {
       if (duration === '0d') {

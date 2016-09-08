@@ -60,5 +60,16 @@ describe('indexSpec', function() {
       expect(typeof durationResult).to.equal('string');
       expect(durationResult).to.equal('2012-01-01');
     });
+
+    it('should have a convenience method for formatting', function() {
+      const TEST_DATE = '2012-01-01'
+        , dates = entryPoint(TEST_DATE)
+        ;
+
+      expect(dates.format).to.not.equal(undefined);
+      expect(typeof dates.format).to.equal('function');
+
+      expect(dates.format('YYYY => MM => DD')).to.equal('2012 => 01 => 01');
+    });
   });
 });
