@@ -13,9 +13,9 @@ const validityChecks = require('validity_checks')
  */
 const hasDateExpired = (date = reqParam('date')) => {
   const now = new Date();
-  
+
   if (!isDate(date)) { throw new Error('Param "date" isnt a Date instance'); }
-  
+
   return date < now;
 };
 

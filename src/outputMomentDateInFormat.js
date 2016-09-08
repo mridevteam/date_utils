@@ -5,10 +5,10 @@ const validityChecks = require('validity_checks')
   , rp = validityChecks.requiredParameter
   ;
 
-module.exports = (dateToFormat = rp('dateToFormat(moment)'), desiredFormat = rp('desiredFormat')) => {
-  if (!(dateToFormat instanceof moment)) {
+module.exports = (mDtf = rp('dateToFormat(moment)'), desiredFormat = rp('desiredFormat')) => {
+  if (!(mDtf instanceof moment)) {
     throw new Error('First param must be a momentized date object');
   }
-  
-  return dateToFormat.format(desiredFormat);
+
+  return mDtf.format(desiredFormat);
 };

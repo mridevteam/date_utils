@@ -13,7 +13,7 @@ module.exports = (dateToParse) => {
       // For now since all we need to ask isValid? just pass back false
       return {isValid: () => false};
     }
-    
+
     return moment.utc(dateObject);
   }
 };
