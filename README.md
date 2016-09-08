@@ -5,7 +5,6 @@ Consists of date utility functions.
 [![Coverage Status](https://coveralls.io/repos/github/mridevteam/date_utils/badge.svg?branch=master)](https://coveralls.io/github/mridevteam/date_utils?branch=master)
 [![Dependency Status](https://david-dm.org/mridevteam/date_utils.svg)](https://david-dm.org/mridevteam/date_utils)
 
-
 ### Continuous Integration
 Currently using [travis-ci.org](https://travis-ci.org/mridevteam) for continuous integration.
 
