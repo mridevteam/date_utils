@@ -4,9 +4,10 @@
   "description": "",
   "main": "./index.js",
   "scripts": {
-    "buildClient": "browserify index.js -t [ babelify --presets [ es2015 ] ] --outfile ./dist/dateUtils.js -s __dateUtils",
-    "preversion": "npm run lint && npm run test && npm run buildClient",
+    "build:client": "npm run clean && browserify index.js -t [ babelify --presets [ es2015 ] ] --outfile ./dist/dateUtils.js -s __dateUtils",
+    "preversion": "npm run lint && npm run test && npm run build:client",
     "lint": "./node_modules/jscs/bin/jscs src -x",
+    "clean": "rm -rf ./dist/*",
     "test": "istanbul cover ./node_modules/mocha/bin/_mocha ./src/test --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage"
   },
   "repository": {
