@@ -30,11 +30,11 @@ describe('addDurationToDateSpec', function() {
 
     durations.forEach(d => {
       it(`should add ${d.in} correctly.`, function() {
-        let dDate = addDuration(moment.utc(new Date(INPUT)), d.in, 'YYYY-MM-DD');
+        let mDate = addDuration(moment.utc(new Date(INPUT)), d.in);
 
-        expect(typeof dDate).to.equal('string');
+        expect(mDate instanceof moment).to.equal(true);
 
-        expect(dDate).to.equal(d.out);
+        expect(mDate.format('YYYY-MM-DD')).to.equal(d.out);
       });
     });
   });
@@ -62,11 +62,11 @@ describe('addDurationToDateSpec', function() {
 
     durations.forEach(d => {
       it(`should subtract ${d.in} correctly.`, function() {
-        let dDate = addDuration(moment.utc(new Date(INPUT)), d.in, 'YYYY-MM-DD');
+        let mDate = addDuration(moment.utc(new Date(INPUT)), d.in);
 
-        expect(typeof dDate).to.equal('string');
+        expect(mDate instanceof moment).to.equal(true);
 
-        expect(dDate).to.equal(d.out);
+        expect(mDate.format('YYYY-MM-DD')).to.equal(d.out);
       });
     });
   });
@@ -80,18 +80,7 @@ describe('addDurationToDateSpec', function() {
 
       let durationResult = addDuration(mTestDate, DURATION_INPUT);
 
-      expect(durationResult).to.equal('2012-01-02');
-    });
-
-    it('should accept and format what i pass', function() {
-      const DATE_INPUT = `2012-01-01`
-        , DURATION_INPUT = `+1d`
-        , mTestDate = moment.utc(new Date(DATE_INPUT))
-        ;
-
-      let durationResult = addDuration(mTestDate, DURATION_INPUT, 'MM/DD/YYYY');
-
-      expect(durationResult).to.equal('01/02/2012');
+      expect(durationResult.format('YYYY-MM-DD')).to.equal('2012-01-02');
     });
   });
 });
