@@ -1,5 +1,7 @@
 'use strict';
 
+
+// Current Durations supported are y,m,d,h
 module.exports = (mDate, duration, outputFormat = 'YYYY-MM-DD') => {
   let _duration = duration.slice(0, duration.length - 1)
     , unitOfTime = duration.charAt(duration.length - 1)
