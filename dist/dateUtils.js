@@ -30,12 +30,14 @@ module.exports = function dateUtilities(dateToParse) {
     toDbFormat: new Date(mDate.year(), mDate.month(), mDate.date()),
     addDuration: function addDuration() {
       var duration = arguments.length <= 0 || arguments[0] === undefined ? '0d' : arguments[0];
-      var outputFormat = arguments.length <= 1 || arguments[1] === undefined ? 'YYYY-MM-DD' : arguments[1];
 
       if (duration === '0d') {
         console.log('duration read as ' + duration + '; probably didnt pass a duration');
       }
-      return _addDuration(mDate, duration, outputFormat);
+
+      var mNewDate = _addDuration(mDate, duration);
+
+      return new dateUtilities(mNewDate);
     }
   };
 };
@@ -4355,16 +4357,16 @@ module.exports = requiredParameter;
 },{}],11:[function(require,module,exports){
 'use strict';
 
-module.exports = function (mDate, duration) {
-  var outputFormat = arguments.length <= 2 || arguments[2] === undefined ? 'YYYY-MM-DD' : arguments[2];
+// Current Durations supported are y,m,d,h
 
+module.exports = function (mDate, duration) {
   var _duration = duration.slice(0, duration.length - 1),
       unitOfTime = duration.charAt(duration.length - 1);
 
   // transforming 'm' to 'M' because we mean months not minutes
   unitOfTime = unitOfTime === 'm' ? unitOfTime.toUpperCase() : unitOfTime;
 
-  return mDate.clone().add(_duration, unitOfTime).format(outputFormat);
+  return mDate.clone().add(_duration, unitOfTime);
 };
 
 },{}],12:[function(require,module,exports){
