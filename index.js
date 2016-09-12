@@ -25,11 +25,14 @@ module.exports = function dateUtilities (dateToParse) {
     , dateForDisplayFull: output('MMM DD, YYYY')
     , format: output
     , toDbFormat: new Date(mDate.year(), mDate.month(), mDate.date())
-    , addDuration: (duration = '0d', outputFormat = 'YYYY-MM-DD') => {
+    , addDuration: (duration = '0d') => {
       if (duration === '0d') {
         console.log(`duration read as ${duration}; probably didnt pass a duration`);
       }
-      return addDuration(mDate, duration, outputFormat);
+      
+      let mNewDate = addDuration(mDate, duration)
+      
+      return new dateUtilities(mNewDate);
     }
   }
 }

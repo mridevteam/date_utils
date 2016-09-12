@@ -46,8 +46,8 @@ describe('indexSpec', function() {
 
       let durationResult = dates.addDuration('+1d');
 
-      expect(typeof durationResult).to.equal('string');
-      expect(durationResult).to.equal('2012-01-02');
+      expect(typeof durationResult).to.equal('object');
+      expect(durationResult.format('YYYY-MM-DD')).to.equal('2012-01-02');
     });
 
     it('should add duration of +0d if nothing passed', function() {
@@ -57,8 +57,23 @@ describe('indexSpec', function() {
 
       let durationResult = dates.addDuration();
 
-      expect(typeof durationResult).to.equal('string');
-      expect(durationResult).to.equal('2012-01-01');
+      expect(typeof durationResult).to.equal('object');
+      expect(durationResult.format('YYYY-MM-DD')).to.equal('2012-01-01');
+    });
+
+    it('add duration should return exact options as regular date util call', function() {
+      const TEST_DATE = '2012-01-01'
+        , dates = entryPoint(TEST_DATE)
+        ;
+
+      let durationResult = dates.addDuration();
+
+      expect(typeof durationResult).to.equal('object');
+
+      expect(durationResult.hasOwnProperty('dateProvided')).to.equal(true);
+      expect(durationResult.hasOwnProperty('format')).to.equal(true);
+
+      expect(durationResult.format('YYYY-MM-DD')).to.equal('2012-01-01');
     });
 
     it('should have a convenience method for formatting', function() {
