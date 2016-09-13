@@ -34,7 +34,7 @@ describe('indexSpec', function() {
 
       expect(dates.dateProvided).to.equal(TEST_DATE);
       expect(dates.standardDateFormat).to.equal('2012-01-01 00:00:00');
-      expect(dates.dateForDisplay).to.equal('01-01-2012');
+      expect(dates.dateForDisplay).to.equal('2012-01-01');
       expect(dates.toDbFormat).to.eql(new Date(2012, 0, 1));
       expect(typeof dates.addDuration).to.equal('function');
     });
