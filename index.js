@@ -21,7 +21,7 @@ module.exports = function dateUtilities (dateToParse) {
     , momentDate: mDate
     , ticks: mDate.valueOf()
     , standardDateFormat: output('YYYY-MM-DD HH:mm:ss')
-    , dateForDisplay: output('MM-DD-YYYY')
+    , dateForDisplay: output('YYYY-MM-DD')
     , dateForDisplayFull: output('MMM DD, YYYY')
     , format: output
     , toDbFormat: new Date(mDate.year(), mDate.month(), mDate.date())
