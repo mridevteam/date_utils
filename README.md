@@ -24,7 +24,7 @@ d.dateProvided       -> '2012-12-01'
 d.momentDate         -> Moment-ized date object for you to do with what you want
 d.ticks              -> valueOf() in Moment
 d.standardDateFormat -> '2012-12-01 00:00:00'
-d.dateForDisplay     -> '12-01-2012'
+d.dateForDisplay     -> '2012-12-01'
 d.dateForDisplayFull -> 'December 01, 2012'
 d.toDbFormat         -> '2012-12-01T06:00:00.000Z' instance of Date
 ```
@@ -58,7 +58,7 @@ d.dateProvided       -> '2012-12-01'
 d.momentDate         -> Moment-ized date object for you to do with what you want
 d.ticks              -> valueOf() in Moment
 d.standardDateFormat -> '2012-12-01 00:00:00'
-d.dateForDisplay     -> '12-01-2012'
+d.dateForDisplay     -> '2012-12-01'
 d.dateForDisplayFull -> 'December 01, 2012'
 d.toDbFormat         -> '2012-12-01T06:00:00.000Z' instance of Date
 
