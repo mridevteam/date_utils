@@ -27,7 +27,7 @@ module.exports = function dateUtilities(dateToParse) {
     dateForDisplay: output('YYYY-MM-DD'),
     dateForDisplayFull: output('MMM DD, YYYY'),
     format: output,
-    toDbFormat: new Date(mDate.year(), mDate.month(), mDate.date()),
+    toDbFormat: new Date(mDate.year(), mDate.month(), mDate.date(), mDate.hours(), mDate.minutes()),
     addDuration: function addDuration() {
       var duration = arguments.length <= 0 || arguments[0] === undefined ? '0d' : arguments[0];
 

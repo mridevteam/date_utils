@@ -24,7 +24,7 @@ module.exports = function dateUtilities (dateToParse) {
     , dateForDisplay: output('YYYY-MM-DD')
     , dateForDisplayFull: output('MMM DD, YYYY')
     , format: output
-    , toDbFormat: new Date(mDate.year(), mDate.month(), mDate.date())
+    , toDbFormat: new Date(mDate.year(), mDate.month(), mDate.date(), mDate.hours(), mDate.minutes())
     , addDuration: (duration = '0d') => {
       if (duration === '0d') {
         console.log(`duration read as ${duration}; probably didnt pass a duration`);
