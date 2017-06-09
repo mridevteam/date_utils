@@ -21,6 +21,7 @@ const dateUtils = require('date_utils')
 
 let d = dateUtils('2012-12-01')
 d.dateProvided       -> '2012-12-01'
+d.asUtc              -> Returns a UTC version of moment object
 d.momentDate         -> Moment-ized date object for you to do with what you want
 d.ticks              -> valueOf() in Moment
 d.standardDateFormat -> '2012-12-01 00:00:00'
