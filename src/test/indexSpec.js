@@ -25,6 +25,7 @@ describe('indexSpec', function() {
 
       expect(dates.dateProvided).to.not.equal(undefined);
       expect(dates.momentDate instanceof moment).to.equal(true);
+      expect(dates.asUtc instanceof moment).to.equal(true);
       expect(dates.ticks).to.not.equal(undefined);
       expect(dates.standardDateFormat).to.not.equal(undefined);
       expect(dates.dateForDisplay).to.not.equal(undefined);
